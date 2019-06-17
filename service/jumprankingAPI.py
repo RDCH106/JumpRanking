@@ -59,6 +59,11 @@ class RegisterList(linkero.Resource):
         result = Record.to_json(ret)
         return result
 
+    def delete(self):
+        Record.query.delete()
+        linkero.db.session.commit()
+        return 204
+
 
 ##
 ## Actually setup the Api resource routing here
