@@ -48,4 +48,4 @@ class Register(linkero.Resource):
 ## Actually setup the Api resource routing here
 ##
 def load_jumprankingAPI():
-    linkero.api.add_resource(Register, api_base_path+'/register/<id>')
+    linkero.api.add_resource(Register, api_base_path+'/registers/<id>')
