@@ -21,7 +21,7 @@ class Record(linkero.db.Model):
         self.height = height
 
     def __repr__(self):
-        return '<Record %r - %r -%r -%r>' % (self.id, self.user, self.height)
+        return '<Record %r - %r - %r>' % (self.id, self.user, self.height)
 
 
 class Register(linkero.Resource):
