@@ -41,6 +41,7 @@ class Record(linkero.db.Model):
 class Register(linkero.Resource):
     def get(self, id):
         ret = Record.query.get(id)
+        #ret = Record.query.filter_by(height=230).all()
         result = Record.to_json(ret)
         return result
 
