@@ -40,7 +40,9 @@ class Record(linkero.db.Model):
 
 class Register(linkero.Resource):
     def get(self, id):
-        return 0
+        ret = Record.query.get(id)
+        result = Record.to_json(ret)
+        return result
 
 ##
 ## Actually setup the Api resource routing here
