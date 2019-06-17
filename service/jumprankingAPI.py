@@ -14,7 +14,7 @@ class Record(linkero.db.Model):
     __tablename__ = "records"
     id = linkero.db.Column(linkero.db.Integer, primary_key=True)
     user = linkero.db.Column(linkero.db.String(45))
-    height = linkero.db.Column(linkero.db.Float)
+    height = linkero.db.Column(linkero.db.Integer)
 
     def __init__(self, user, height):
         self.user = user
