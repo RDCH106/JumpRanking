@@ -6,9 +6,6 @@ from collections import Iterable
 
 api_base_path = "/jumpranking/api/v1"
 
-# extensions
-#db = SQLAlchemy(app)
-#linkero.db
 record_prototype = {'id': None, 'user': None, 'height': None}
 
 
