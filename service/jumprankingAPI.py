@@ -45,6 +45,14 @@ class Register(linkero.Resource):
         return result
 
 
+class RegisterAddition(linkero.Resource):
+    def post(self, user, height):
+        record = Record(user, height)
+        linkero.db.session.add(record)
+        linkero.db.session.commit()
+        return 201
+
+
 class RegisterList(linkero.Resource):
     def get(self):
         ret = Record.query.all()
@@ -57,4 +65,5 @@ class RegisterList(linkero.Resource):
 ##
 def load_jumprankingAPI():
     linkero.api.add_resource(Register, api_base_path+'/registers/<id>')
+    linkero.api.add_resource(RegisterAddition, api_base_path + '/registers/<user>/<height>')
     linkero.api.add_resource(RegisterList, api_base_path + '/registers')
