@@ -44,6 +44,7 @@ class Register(linkero.Resource):
 
 
 class RegisterAddition(linkero.Resource):
+    @linkero.auth.login_required
     def post(self, user, height):
         record = Record(user, height)
         linkero.db.session.add(record)
@@ -57,6 +58,7 @@ class RegisterList(linkero.Resource):
         result = Record.to_json(ret)
         return result
 
+    @linkero.auth.login_required
     def delete(self):
         Record.query.delete()
         linkero.db.session.commit()
