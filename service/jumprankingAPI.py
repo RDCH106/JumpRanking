@@ -60,9 +60,11 @@ class RegisterList(linkero.Resource):
 
     @linkero.auth.login_required
     def delete(self):
+        ret = Record.query.all()
+        result = Record.to_json(ret)
         Record.query.delete()
         linkero.db.session.commit()
-        return 204
+        return result, 204
 
 
 ##
