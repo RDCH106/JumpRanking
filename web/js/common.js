@@ -2,6 +2,7 @@
 var ranking;
 var maxranking = 100;  // Max ranking elements (TOP 100)
 var api_url = "http://192.168.1.224:5000"
+var update_interval = 5000
     
 function printRanking(ranking){
     ranking.forEach(function(arrayItem){            
