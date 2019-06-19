@@ -16,6 +16,22 @@ function printRanking(ranking){
     });
     console.log("HTML ranking printed!");   
 }
+
+function updateRankingData(){
+    $.ajax({type:"GET", url: api_url + "/jumpranking/api/v1/registers", dataType: "json", async: true,
+        success: function(data) {            
+            var ranking_data = data.data.slice(0, maxranking);
+            var ranking_data_array = [];
+            ranking_data.forEach(function(arrayItem){
+                delete arrayItem.id;
+                ranking_data_array.push([arrayItem.user, arrayItem.height]);
+                });
+            ranking.clear();
+            ranking.rows.add(ranking_data_array);
+            ranking.draw(false);  // Retain navigation state
+            console.log("ranking updated!");  
+        }
+    });
 }
     
 function getRanking(region){
