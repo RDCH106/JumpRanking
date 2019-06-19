@@ -41,6 +41,8 @@ function getRanking(region){
             printRanking(data.data.slice(0, maxranking));
             ranking =$("#ranking").DataTable(datatable_options);
         }
+    }).then(function() {
+        setInterval( updateRankingData, update_interval );
     });
 }
 
