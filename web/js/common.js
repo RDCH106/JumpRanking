@@ -33,4 +33,11 @@ function init(region){
          $("#selection").val(region);    
     });
     
+    document.onkeyup = function(e) {
+        if (e.ctrlKey && e.altKey && e.which == 84) {
+            api_url = prompt("API URL", "http://jump-api.stt-systems.com:5030");
+            getRanking(region);
+        }
+    };
+    
 }
