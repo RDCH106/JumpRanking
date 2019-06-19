@@ -35,7 +35,7 @@ function updateRankingData(){
     });
 }
     
-function getRanking(region){
+function getRanking(){
     
     $.ajax({type:"GET", url: api_url + "/jumpranking/api/v1/registers", dataType: "json", async: true,
         success: function(data) {            
@@ -59,19 +59,18 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-function init(region){
+function init(){
     
     $(document).ready(function () {
         update_flag = getParameterByName('update') == null ? false : getParameterByName('update') == 'true';
         update_interval = getParameterByName('interval') == null ? update_interval : parseInt(getParameterByName('interval'), 10);
-         getRanking(region);
-         $("#selection").val(region);    
+        getRanking();   
     });
     
     document.onkeyup = function(e) {
         if (e.ctrlKey && e.altKey && e.which == 84) {
             api_url = prompt("API URL", "http://jump-api.stt-systems.com:5030");
-            getRanking(region);
+            getRanking();
         }
     };
     
