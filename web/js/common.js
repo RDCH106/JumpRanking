@@ -9,12 +9,13 @@ var datatable_options = {
                         } 
     
 function printRanking(ranking){
-    ranking.forEach(function(arrayItem){            
-            $("#ranking tbody").append("<tr><td>"+arrayItem.user
-            +"</td><td>"+arrayItem.height
-            +"</td></tr>");
-        });
-        
+    ranking.forEach(function(arrayItem){ 
+        $("#ranking tbody").append("<tr><td>"+arrayItem.user
+        +"</td><td>"+arrayItem.height
+        +"</td></tr>");
+    });
+    console.log("HTML ranking printed!");   
+}
 }
     
 function getRanking(region){
