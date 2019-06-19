@@ -1,0 +1,70 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+        <title>JumpRanking-Viewer</title>
+        <meta charset="UTF-8">        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>        
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js"></script>
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.0/js/responsive.bootstrap.min.js"></script>
+        <script type="text/javascript" language="javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+        <script type="text/javascript" language="javascript" src="js/common.js"></script>
+        <link id="css_theme" rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.0/css/responsive.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+        <link rel="stylesheet" type="text/css" href="css/custom.css">
+    </head>
+    <body>       
+
+        <div class="container">
+            <br/>
+            <h2 style="float:left">STT Systems - Jump Ranking</h2>
+        </div>        
+    
+        <div class="container">                 
+            <br/><br/>
+            <table id="ranking" class="table table-striped dt-responsive" width="100%">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Height</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>User</th>
+                        <th>Height</th>
+                    </tr>
+                </tfoot>
+            <tbody>
+                <!-- Feed the table with getRanking -->
+            </tbody>
+        </table>
+    </div>
+    
+    <script>
+    
+    // Init ranking
+    init("spain-region");
+    
+    </script>
+
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">
+                    <center>
+                    Footer line 1
+                    <br />
+                    Footer line 2
+                    <br />
+                    </center>
+                </span>                
+            </div>
+        </footer>
+    
+    </body>
+</html> 
