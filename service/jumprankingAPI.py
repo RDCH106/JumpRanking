@@ -49,7 +49,7 @@ class RegisterAddition(linkero.Resource):
         record = Record(user, height)
         linkero.db.session.add(record)
         linkero.db.session.commit()
-        return 201
+        return Record.to_json(record), 201
 
 
 class RegisterList(linkero.Resource):
