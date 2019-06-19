@@ -3,7 +3,7 @@ var ranking;
 var maxranking = 100;  // Max ranking elements (TOP 100)
 var api_url = "http://192.168.1.224:5000";
 var update_flag;
-var update_interval = 5000;
+var update_interval = 30000;
 var datatable_options = {
                             "order": [[ 1, "desc" ]],
                             "responsive": true
@@ -63,6 +63,7 @@ function init(region){
     
     $(document).ready(function () {
         update_flag = getParameterByName('update') == null ? false : getParameterByName('update') == 'true';
+        update_interval = getParameterByName('interval') == null ? update_interval : parseInt(getParameterByName('interval'), 10);
          getRanking(region);
          $("#selection").val(region);    
     });
