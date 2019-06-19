@@ -2,6 +2,7 @@
 var ranking;
 var maxranking = 100;  // Max ranking elements (TOP 100)
 var api_url = "http://192.168.1.224:5000";
+var update_flag;
 var update_interval = 5000;
 var datatable_options = {
                             "order": [[ 1, "desc" ]],
@@ -42,7 +43,9 @@ function getRanking(region){
             ranking =$("#ranking").DataTable(datatable_options);
         }
     }).then(function() {
-        setInterval( updateRankingData, update_interval );
+        if(update_flag){
+            setInterval( updateRankingData, update_interval );
+        }        
     });
 }
 
@@ -59,6 +62,7 @@ function getParameterByName(name, url) {
 function init(region){
     
     $(document).ready(function () {
+        update_flag = getParameterByName('update') == null ? false : getParameterByName('update') == 'true';
          getRanking(region);
          $("#selection").val(region);    
     });
