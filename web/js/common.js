@@ -3,6 +3,10 @@ var ranking;
 var maxranking = 100;  // Max ranking elements (TOP 100)
 var api_url = "http://192.168.1.224:5000"
 var update_interval = 5000
+var datatable_options = {
+                            "order": [[ 1, "desc" ]],
+                            "responsive": true
+                        } 
     
 function printRanking(ranking){
     ranking.forEach(function(arrayItem){            
@@ -18,11 +22,7 @@ function getRanking(region){
     $.ajax({type:"GET", url: api_url + "/jumpranking/api/v1/registers", dataType: "json", async: true,
         success: function(data) {            
             printRanking(data.data.slice(0, maxranking));
-            ranking =$("#ranking").DataTable( 
-            {
-                "order": [[ 1, "desc" ]],
-                "responsive": true
-            } );
+            ranking =$("#ranking").DataTable(datatable_options);
         }
     });
 }
