@@ -62,8 +62,8 @@ function getParameterByName(name, url) {
 function init(){
     
     $(document).ready(function () {
-        updateFlag = getParameterByName('update') === null ? false : getParameterByName('update') === 'true';
-        updateInterval = getParameterByName('interval') === null ? updateInterval : parseInt(getParameterByName('interval'), 10);
+        updateFlag = getParameterByName("update") === null ? false : getParameterByName("update") === "true";
+        updateInterval = getParameterByName("interval") === null ? updateInterval : parseInt(getParameterByName("interval"), 10);
         getRanking();   
     });
     
