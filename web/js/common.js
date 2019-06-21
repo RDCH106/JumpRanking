@@ -62,13 +62,13 @@ function getParameterByName(name, url) {
 function init(){
     
     $(document).ready(function () {
-        updateFlag = getParameterByName('update') == null ? false : getParameterByName('update') == 'true';
-        updateInterval = getParameterByName('interval') == null ? updateInterval : parseInt(getParameterByName('interval'), 10);
+        updateFlag = getParameterByName('update') === null ? false : getParameterByName('update') === 'true';
+        updateInterval = getParameterByName('interval') === null ? updateInterval : parseInt(getParameterByName('interval'), 10);
         getRanking();   
     });
     
     document.onkeyup = function(e) {
-        if (e.ctrlKey && e.altKey && e.which == 84) {
+        if (e.ctrlKey && e.altKey && e.which === 84) {
             apiUrl = prompt("API URL", "http://jump-api.stt-systems.com:5030");
             getRanking();
         }
