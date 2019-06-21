@@ -53,7 +53,8 @@ class RegisterAddition(linkero.Resource):
 
 
 class RegisterList(linkero.Resource):
-    def get(self):
+    @classmethod
+    def get(cls):
         ret = Record.query.all()
         result = Record.to_json(ret)
         return result
