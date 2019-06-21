@@ -1,7 +1,7 @@
 
 var ranking;
 var maxranking = 100;  // Max ranking elements (TOP 100)
-var api_url = "http://192.168.1.224:5000";
+var api_url = "http://jump-api.stt-systems.com:5030";
 var update_flag;
 var update_interval = 30000;
 var datatable_options = {
