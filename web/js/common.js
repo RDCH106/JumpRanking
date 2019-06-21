@@ -40,7 +40,7 @@ function getRanking(){
     $.ajax({type:"GET", url: apiUrl + "/jumpranking/api/v1/registers", dataType: "json", async: true,
         success: function(data) {            
             printRanking(data.data.slice(0, maxranking));
-            ranking =$("#ranking").DataTable(datatableOptions);
+            ranking = new $("#ranking").DataTable(datatableOptions);
         }
     }).then(function() {
         if(updateFlag){
