@@ -11,9 +11,10 @@ Simple Jump Ranking created using a REST service developed in Python and Web vie
   + Run Web viewer from repository or host the web in Apache server
 * Use it as base project for bigger projects
 
-### Installation
+### 🛠️ Installation
+<hr>
 
-#### REST Service
+#### 🤖 REST Service
 
 Install service requirements using [requierements.txt](https://github.com/RDCH106/JumpRanking/blob/master/service/requirements.txt):
 
@@ -25,7 +26,7 @@ Run with and follow [linkero](https://github.com/ingran/linkero) instructions:
 
 ⚠️ REST service runs with Python2 and Python3
 
-#### Web Viewer
+#### 👀 Web Viewer
 
 Host Web viewer directly from GitHub with [raw.githack.com](https://github.com/neoascetic/rawgithack):
 
