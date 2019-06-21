@@ -36,8 +36,9 @@ class Record(linkero.db.Model):
 
 
 class Register(linkero.Resource):
-    def get(self, id):
-        ret = Record.query.get(id)
+    @classmethod
+    def get(cls, id_table):
+        ret = Record.query.get(id_table)
         #ret = Record.query.filter_by(height=230).all()
         result = Record.to_json(ret)
         return result
@@ -72,6 +73,6 @@ class RegisterList(linkero.Resource):
 ## Actually setup the Api resource routing here
 ##
 def load_jumprankingAPI():
-    linkero.api.add_resource(Register, api_base_path+'/registers/<id>')
+    linkero.api.add_resource(Register, api_base_path+'/registers/<id_table>')
     linkero.api.add_resource(RegisterAddition, api_base_path + '/registers/<user>/<height>')
     linkero.api.add_resource(RegisterList, api_base_path + '/registers')
