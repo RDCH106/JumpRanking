@@ -1,10 +1,10 @@
 
 var ranking;
 var maxranking = 100;  // Max ranking elements (TOP 100)
-var api_url = "https://server1.mascandobits.es:5030";
-var update_flag;
-var update_interval = 30000;
-var datatable_options = {
+var apiUrl = "https://server1.mascandobits.es:5030";
+var updateFlag;
+var updateInterval = 30000;
+var datatableOptions = {
                             "order": [[ 1, "desc" ]],
                             "responsive": true
                         };
@@ -19,16 +19,16 @@ function printRanking(ranking){
 }
 
 function updateRankingData(){
-    $.ajax({type:"GET", url: api_url + "/jumpranking/api/v1/registers", dataType: "json", async: true,
+    $.ajax({type:"GET", url: apiUrl + "/jumpranking/api/v1/registers", dataType: "json", async: true,
         success: function(data) {            
-            var ranking_data = data.data.slice(0, maxranking);
-            var ranking_data_array = [];
-            ranking_data.forEach(function(arrayItem){
+            var rankingData = data.data.slice(0, maxranking);
+            var rankingDataArray = [];
+            rankingData.forEach(function(arrayItem){
                 delete arrayItem.id;
-                ranking_data_array.push([arrayItem.user, arrayItem.height]);
+                rankingDataArray.push([arrayItem.user, arrayItem.height]);
                 });
             ranking.clear();
-            ranking.rows.add(ranking_data_array);
+            ranking.rows.add(rankingDataArray);
             ranking.draw(false);  // Retain navigation state
             console.log("ranking updated!");  
         }
@@ -37,14 +37,14 @@ function updateRankingData(){
     
 function getRanking(){
     
-    $.ajax({type:"GET", url: api_url + "/jumpranking/api/v1/registers", dataType: "json", async: true,
+    $.ajax({type:"GET", url: apiUrl + "/jumpranking/api/v1/registers", dataType: "json", async: true,
         success: function(data) {            
             printRanking(data.data.slice(0, maxranking));
-            ranking =$("#ranking").DataTable(datatable_options);
+            ranking =$("#ranking").DataTable(datatableOptions);
         }
     }).then(function() {
-        if(update_flag){
-            setInterval( updateRankingData, update_interval );
+        if(updateFlag){
+            setInterval( updateRankingData, updateInterval );
         }        
     });
 }
@@ -62,14 +62,14 @@ function getParameterByName(name, url) {
 function init(){
     
     $(document).ready(function () {
-        update_flag = getParameterByName('update') == null ? false : getParameterByName('update') == 'true';
-        update_interval = getParameterByName('interval') == null ? update_interval : parseInt(getParameterByName('interval'), 10);
+        updateFlag = getParameterByName('update') == null ? false : getParameterByName('update') == 'true';
+        updateInterval = getParameterByName('interval') == null ? updateInterval : parseInt(getParameterByName('interval'), 10);
         getRanking();   
     });
     
     document.onkeyup = function(e) {
         if (e.ctrlKey && e.altKey && e.which == 84) {
-            api_url = prompt("API URL", "http://jump-api.stt-systems.com:5030");
+            apiUrl = prompt("API URL", "http://jump-api.stt-systems.com:5030");
             getRanking();
         }
     };
