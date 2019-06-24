@@ -57,7 +57,7 @@ Add register:
 
 Verb (POST) - 🔐Auth - Response (JSON + HTTP 201 --> added)
 
-https://your_host:port/jumpranking/api/v1/registers/<username>/<height>
+https://your_host:port/jumpranking/api/v1/registers/\<username\>/\<height\>
   
 💡 Replace `<username>` and `<height>` by desired values
 
