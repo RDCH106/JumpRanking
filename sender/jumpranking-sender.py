@@ -2,6 +2,10 @@
 
 from tkinter import *
 
+response_ok = "✔️"
+response_error = "❌"
+response_sending = "⏳"
+
 
 class App:
     def __init__(self, master):
@@ -22,6 +26,9 @@ class App:
         self.height_l.pack(side=LEFT, padx=5, pady=20)
         self.height_i = Entry(master)
         self.height_i.pack(side=LEFT, padx=5, pady=20)
+
+        self.response_l = Label(master, text="")
+        self.response_l.pack(side=RIGHT, padx=5, pady=20)
 
         self.quit_b = Button(master, text="SEND", command=sys.exit)
         self.quit_b.pack(side=RIGHT, padx=20, pady=20)
