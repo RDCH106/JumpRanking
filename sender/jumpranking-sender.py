@@ -1,10 +1,15 @@
 # -*- coding: utf-8 -*-
 
 from tkinter import *
+from tkinter import messagebox
+from requests import post, exceptions
+import time
 
 response_ok = "✔️"
 response_error = "❌"
 response_sending = "⏳"
+
+api = "https://server1.mascandobits.es:5030/jumpranking/api/v1/registers"
 
 
 class App:
@@ -36,6 +41,25 @@ class App:
         self.response_l = Label(master, text=" ")
         self.response_l.pack(side=RIGHT, padx=5, pady=20)
 
+    def send_request(self):
+        self.response_l["text"] = response_sending
+        self.response_l.update()
+        if self.user_i.get() != "" and self.height_i.get() != "" and self.height_i.get().isdigit():
+            try:
+                response = post(api + "/" + self.user_i.get() + "/" + self.height_i.get(), auth=("", ""))
+                if response.status_code == 201:
+                    self.response_l["text"] = response_ok
+                    self.user_i.delete(0, END)
+                    self.height_i.delete(0, END)
+                else:
+                    self.response_l["text"] = response_error
+            except exceptions.RequestException as e:
+                print(e)
+                messagebox.showerror("Error", e)
+                self.response_l["text"] = response_error
+        else:
+            messagebox.showerror("Error", "Invalid input data!!")
+            self.response_l["text"] = response_error
 
 
 root = Tk()
