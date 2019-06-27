@@ -4,7 +4,7 @@ from tkinter import *
 
 
 class App:
-    def __init__(self,master):
+    def __init__(self, master):
         frame = Frame(master)
         master.geometry("500x75")
         master.title("Jump Ranking Sender")
