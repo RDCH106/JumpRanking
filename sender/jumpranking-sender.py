@@ -3,7 +3,8 @@
 from tkinter import *
 from tkinter import messagebox
 from requests import post, exceptions
-import time
+from json import load, JSONDecodeError
+from hashlib import sha256
 
 response_ok = "✔️"
 response_error = "❌"
@@ -14,8 +15,12 @@ api = "https://server1.mascandobits.es:5030/jumpranking/api/v1/registers"
 
 class App:
     def __init__(self, master):
+        self.credentials = None
+        self.load_json()
+        self.hash = sha256()
+
         frame = Frame(master)
-        master.geometry("500x75")
+        master.geometry("500x100")
         master.title("Jump Ranking Sender")
         frame.pack()
 
@@ -41,24 +46,42 @@ class App:
         self.response_l = Label(master, text=" ")
         self.response_l.pack(side=RIGHT, padx=5, pady=20)
 
+        self.password_l = Label(master, text="Password:")
+        self.password_l.place(x=290, y=75)
+        self.password_i = Entry(master, show="*")
+        self.password_i.place(x=360, y=75)
+
+    def load_json(self):
+        with open("config/config.json", 'r') as f:
+            try:
+                self.credentials = load(f)
+            except JSONDecodeError as e:
+                messagebox.showerror("Error", "config.json decode error!!")
+
     def send_request(self):
         self.response_l["text"] = response_sending
         self.response_l.update()
-        if self.user_i.get() != "" and self.height_i.get() != "" and self.height_i.get().isdigit():
-            try:
-                response = post(api + "/" + self.user_i.get() + "/" + self.height_i.get(), auth=("", ""))
-                if response.status_code == 201:
-                    self.response_l["text"] = response_ok
-                    self.user_i.delete(0, END)
-                    self.height_i.delete(0, END)
-                else:
+        self.hash.update(self.password_i.get().encode("utf8"))
+        if self.hash.hexdigest() == self.credentials["password"]:
+            if self.user_i.get() != "" and self.height_i.get() != "" and self.height_i.get().isdigit():
+                try:
+                    response = post(api + "/" + self.user_i.get() + "/" + self.height_i.get(),
+                                    auth=(self.credentials["user"], self.credentials["password"]))
+                    if response.status_code == 201:
+                        self.response_l["text"] = response_ok
+                        self.user_i.delete(0, END)
+                        self.height_i.delete(0, END)
+                    else:
+                        self.response_l["text"] = response_error
+                except exceptions.RequestException as e:
+                    print(e)
+                    messagebox.showerror("Error", e)
                     self.response_l["text"] = response_error
-            except exceptions.RequestException as e:
-                print(e)
-                messagebox.showerror("Error", e)
+            else:
+                messagebox.showerror("Error", "Invalid input data!!")
                 self.response_l["text"] = response_error
         else:
-            messagebox.showerror("Error", "Invalid input data!!")
+            messagebox.showerror("Error", "Invalid password!!")
             self.response_l["text"] = response_error
 
 
