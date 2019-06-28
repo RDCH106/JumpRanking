@@ -17,7 +17,7 @@ class App:
     def __init__(self, master):
         self.credentials = None
         self.load_json()
-        self.hash = sha256()
+        self.hash = None
 
         frame = Frame(master)
         master.geometry("500x100")
@@ -61,12 +61,13 @@ class App:
     def send_request(self):
         self.response_l["text"] = response_sending
         self.response_l.update()
+        self.hash = sha256()
         self.hash.update(self.password_i.get().encode("utf8"))
         if self.hash.hexdigest() == self.credentials["password"]:
             if self.user_i.get() != "" and self.height_i.get() != "" and self.height_i.get().isdigit():
                 try:
                     response = post(api + "/" + self.user_i.get() + "/" + self.height_i.get(),
-                                    auth=(self.credentials["user"], self.credentials["password"]))
+                                    auth=(self.credentials["user"], self.password_i.get()))
                     if response.status_code == 201:
                         self.response_l["text"] = response_ok
                         self.user_i.delete(0, END)
