@@ -4,3 +4,6 @@ __pycache__/
 *.sqlite
 config.json
 !sender/config/config.json
+build/
+dist/
+*.spec
