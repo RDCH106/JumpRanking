@@ -18,9 +18,9 @@ Simple Jump Ranking created using a REST service developed in Python and Web vie
 
 #### 🤖 REST Service
 
-Install service requirements using [requierements.txt](https://github.com/RDCH106/JumpRanking/blob/master/service/requirements.txt):
+Install service requirements using [requirements.txt](https://github.com/RDCH106/JumpRanking/blob/master/service/requirements.txt):
 
-`pip install -r requierements.txt`
+`pip install -r requirements.txt`
 
 Run with and follow [linkero](https://github.com/ingran/linkero) instructions:
 
