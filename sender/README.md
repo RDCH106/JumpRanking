@@ -1,6 +1,6 @@
 # JumpRanking Sender ✉️
 
-Tool to send data to JumpRRanking Service
+Tool to send data to JumpRanking Service
 
 <br>
 
