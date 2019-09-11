@@ -10,13 +10,14 @@ response_ok = "✔️"
 response_error = "❌"
 response_sending = "⏳"
 
-api = "https://server1.mascandobits.es:5030/jumpranking/api/v1/registers"
+api = ""
 
 
 class App:
     def __init__(self, master):
         self.credentials = None
         self.load_json()
+        api = self.credentials["api"]
         self.hash = None
 
         frame = Frame(master)

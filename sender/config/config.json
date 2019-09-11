@@ -1,4 +1,5 @@
 {
-"user": "jump",
-"password": "5566357ec874dbbff886c0513fc266b2f63475c212ecac62c69989af8e4b2b91"
+  "api": "https://server1.mascandobits.es:5030/jumpranking/api/v1/registers",
+  "user": "jump",
+  "password": "5566357ec874dbbff886c0513fc266b2f63475c212ecac62c69989af8e4b2b91"
 }
