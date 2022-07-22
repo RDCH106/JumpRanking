@@ -1,7 +1,7 @@
 
 var ranking;
 var maxranking = 100;  // Max ranking elements (TOP 100)
-var apiUrl = "https://server1.mascandobits.es:5030";
+var apiUrl = "http://192.168.1.3:8098";
 var updateFlag;
 var updateInterval = 30000;
 var datatableOptions = {
