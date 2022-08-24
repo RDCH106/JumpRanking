@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import linkero.core.linkero as linkero
-from collections import Iterable
+from collections.abc import Iterable
 
 
 api_base_path = "/jumpranking/api/v1"

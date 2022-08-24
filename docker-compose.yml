@@ -1,0 +1,23 @@
+version: "3"
+ 
+services:
+
+  jump-contest-service:
+    image:  jump-contest-service:latest
+    container_name: jump-contest-service
+    ports:
+      - "8098:5000"   
+    restart: always
+
+  jump-contest-web:    
+    image: httpd:2.4
+    container_name: jump-contest-web
+    volumes:
+      # Montamos nuestra web desde fuera en el directorio web del contenedor
+      - ./web/:/usr/local/apache2/htdocs/
+    ports:
+      - 8099:80
+    restart: always
+
+
+        
