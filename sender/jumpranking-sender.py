@@ -10,14 +10,13 @@ response_ok = "✔️"
 response_error = "❌"
 response_sending = "⏳"
 
-api = ""
-
 
 class App:
     def __init__(self, master):
         self.credentials = None
         self.load_json()
-        api = self.credentials["api"]
+        self.__api = self.credentials["api"]
+        print(self.__api)
         self.hash = None
 
         frame = Frame(master)
@@ -67,7 +66,8 @@ class App:
         if self.hash.hexdigest() == self.credentials["password"]:
             if self.user_i.get() != "" and self.height_i.get() != "" and self.height_i.get().isdigit():
                 try:
-                    response = post(api + "/" + self.user_i.get() + "/" + self.height_i.get(),
+                    print(self.__api + "/" + self.user_i.get() + "/" + self.height_i.get())
+                    response = post(self.__api + "/" + self.user_i.get() + "/" + self.height_i.get(),
                                     auth=(self.credentials["user"], self.password_i.get()))
                     if response.status_code == 201:
                         self.response_l["text"] = response_ok
